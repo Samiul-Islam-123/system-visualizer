@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
+  --color-border: oklch(var(--border));
+  --color-card: oklch(var(--card));
+  --color-muted: oklch(var(--muted));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+  --color-popover: oklch(var(--popover));
+  --color-primary: oklch(var(--primary));
+  --color-success: oklch(var(--success));
+  --color-danger: oklch(var(--danger));
+  --color-warning: oklch(var(--warning));
+}
+
+:root {
+  --background: 0.15 0 0; /* darker bg */
+  --foreground: 0.98 0 0;
+  
+  --border: 0.25 0 0;
+  --card: 0.18 0 0;
+  
+  --muted: 0.25 0 0;
+  --muted-foreground: 0.65 0 0;
+  
+  --popover: 0.18 0 0;
+  
+  --primary: 0.7 0.1 260;
+  --success: 0.7 0.2 140;
+  --danger: 0.6 0.2 25;
+  --warning: 0.8 0.2 80;
+  
+  /* Sim colors */
+  --sim-cpu: 0.7 0.15 250;
+  --sim-ram: 0.65 0.15 320;
+}
+
+body {
+  background-color: oklch(var(--background));
+  color: oklch(var(--foreground));
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

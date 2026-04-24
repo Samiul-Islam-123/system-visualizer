@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres-primary:
+    image: bitnami/postgresql:latest
+    container_name: pg-primary
+    environment:
+      - POSTGRESQL_USERNAME=admin
+      - POSTGRESQL_PASSWORD=admin_pass
+      - POSTGRESQL_DATABASE=analytics_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_primary_data:/bitnami/postgresql
+
+  data-analytics-server-1:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    depends_on:
+      - postgres-primary
+    ports:
+      - "5000:5000"
+    mem_limit: 4g
+    cpus: 2
+
+  data-analytics-server-2:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    depends_on:
+      - postgres-primary
+    ports:
+      - "5001:5000"
+    mem_limit: 4g
+    cpus: 2
+
+  data-analytics-server-3:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    depends_on:
+      - postgres-primary
+    ports:
+      - "5002:5000"
+    mem_limit: 4g
+    cpus: 2
+
+volumes:
+  pg_primary_data:
